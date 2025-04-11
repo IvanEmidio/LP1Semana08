@@ -1,26 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GameUnits
 {
-    public abstract class Unit 
-    //Changed to abstract because we don't know what unity it will be.
+    public class Program
     {
-        private int movement;
-        public virtual int Health { get; set; } 
-
-        public Unit(int movement, int health)
+        private static void Main()
         {
-            this.movement = movement;
-            Health = health;
-        }
+            // Criar array com três unidades
+            Unit[] units = new Unit[]
+            {
+                new MilitaryUnit(3, 10, 2),
+                new MilitaryUnit(4, 5, 3),
+                new SettlerUnit(),
+            };
 
-        public abstract float Cost { get; } //Read-only abstract property
-        
-        //Shows how much the unity moved
-        public void Move() => Console.WriteLine($"{movement}");
-        
-    }   
+            // Unidade 0 ataca unidade 1
+            (units[0] as MilitaryUnit).Attack(units[1]);
+            // Unidade 0 ataca unidade 2
+            (units[0] as MilitaryUnit).Attack(units[2]);
+
+            // "Imprimir" cada unidade
+            // chamando implicitamente o método ToString() de cada uma delas
+            foreach (Unit u in units)
+            {
+                Console.WriteLine(u);
+            }
+        }
+    }
 }
