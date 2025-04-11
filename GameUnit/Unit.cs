@@ -21,6 +21,9 @@ namespace GameUnits
         
         //Shows how much the unity moved
         public void Move() => Console.WriteLine($"{movement}");
+
+        public override string ToString() => $"{GetType().Name}: HP={Health}" +
+         $" COST={Cost.ToString("0.00")}";
         
     }   
 }

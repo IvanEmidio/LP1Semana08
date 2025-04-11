@@ -41,5 +41,8 @@ namespace GameUnits
             XP++;
             u.Health -= AttackPower;
         }
+
+        public override string ToString() => $"{GetType().Name}:" +
+            $" HP={Health} COST={Cost.ToString("0.00")} AP={AttackPower} XP={XP}";
     }   
 }
